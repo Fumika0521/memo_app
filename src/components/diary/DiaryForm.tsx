@@ -25,7 +25,6 @@ interface DiaryFormProps {
 }
 
 export function DiaryForm({ date, diary, onSaved }: DiaryFormProps) {
-  const router = useRouter()
   const isEdit = !!diary
   const [mood, setMood] = useState(diary?.mood_score ?? 3)
 

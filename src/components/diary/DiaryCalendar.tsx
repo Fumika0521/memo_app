@@ -40,7 +40,7 @@ export function DiaryCalendar({ onSelectDay }: DiaryCalendarProps) {
   const monthStart = startOfMonth(currentMonth)
   const monthEnd = endOfMonth(currentMonth)
   const calStart = startOfWeek(monthStart, { weekStartsOn: 0 })
-  const calEnd = endOfWeek(monthEnd, { weekStartsOn: 0 })
+  endOfWeek(monthEnd, { weekStartsOn: 0 })
 
   const days: Date[] = []
   let day = calStart

@@ -111,11 +111,6 @@ function ViewTab({ mode, onChange, disableMonth, monthLabel }: {
   )
 }
 
-// 件数に応じて背景色を段階的に深化（0件=gray-100 → 多いほど gray-600〜700 寄りに）
-function barBg(count: number): string {
-  const levels = ['#F3F4F6', '#D1D5DB', '#9CA3AF', '#6B7280', '#4B5563', '#374151']
-  return levels[Math.min(count, levels.length - 1)]
-}
 
 const STEP_PX = 20 // 1件ごとに増えるバー幅（px）
 
@@ -216,7 +211,7 @@ function RecordingTime({ data }: { data: RadarItem[] }) {
 export default function ReportPage() {
   const [data, setData]       = useState<ReportData | null>(null)
   const [loading, setLoading] = useState(true)
-  const [selectedMonth, setSelectedMonth] = useState(new Date())
+  const [selectedMonth] = useState(new Date())
   const [moodTab, setMoodTab] = useState<ViewMode>('month')
   const [mainTab, setMainTab] = useState<'mood' | 'time'>('mood')
 

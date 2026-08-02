@@ -11,7 +11,7 @@ function getTimeSlot(date: Date): number {
   return 3                          // 夜
 }
 
-function computeStats(diaries: { created_at: string; mood_score: number; analysis: any }[]) {
+function computeStats(diaries: { created_at: string; mood_score: number; analysis: Record<string, unknown> }[]) {
   const weekday  = Array.from({ length: 7 }, () => ({ total: 0, count: 0 }))
   const timeofday = Array.from({ length: 4 }, () => ({ total: 0, count: 0 }))
   const mood_dist = [0, 0, 0, 0, 0]

@@ -29,15 +29,9 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // 未認証ユーザーを/auth/loginにリダイレクト（認証ルート以外）
-  if (
-    !user &&
-    !request.nextUrl.pathname.startsWith('/auth') &&
-    request.nextUrl.pathname !== '/'
-  ) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/auth/login'
-    return NextResponse.redirect(url)
+  // 未認証の場合は匿名ログイン
+  if (!user) {
+    await supabase.auth.signInAnonymously()
   }
 
   return supabaseResponse
